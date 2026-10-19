@@ -8,22 +8,13 @@ A Python command-line utility with native file dialog support that automatically
 * `pip` package manager
 * `tkinter` (included with standard Python installers on Windows/macOS; Linux users may need `python3-tk`)
 
-## Installation
-
-1. Clone or download this repository.
-2. Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Usage
 
-1. Place your target image(s) (`.jpg`, `.jpeg`, `.png`, `.webp`) inside the `input/` folder.
-2. Run the script from your terminal:
+1. Place your target image(s) (`.jpg`, `.jpeg`, `.png`, `.webp`) inside the `img_bg_remover/input/` folder.
+2. Run the script from the project root directory (`python-utility-belt`):
 
 ```bash
-python bg_remover.py
+python run.py bg
 ```
 
 3. Follow the on-screen prompts to select your processing mode and settings:
@@ -53,7 +44,7 @@ AI Model loaded successfully!
 4. Choose single image save or batch processing:
 
 * **Single Image Processing**: If only one image exists (or if selected from the list when multiple exist), a native File Explorer save window will open allowing you to choose the target location and filename.
-* **Batch Processing**: Automatically processes every image in the `input/` folder and saves the results to the `output/` folder with `_nobg.png` appended.
+* **Batch Processing**: Automatically processes every image in the `img_bg_remover/input/` folder and saves the results to the `output/` folder with `_nobg.png` appended.
 
 ```text
 Found 3 images in the 'input' folder.

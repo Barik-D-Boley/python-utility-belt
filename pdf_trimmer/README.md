@@ -7,22 +7,13 @@ A lightweight Python command-line utility to extract and trim specific pages fro
 * Python 3.8 or higher
 * `pip` package manager
 
-## Installation
-
-1. Clone or download this repository.
-2. Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Usage
 
-1. Place your target PDF(s) inside the `input/` folder.
-2. Run the script from your terminal:
+1. Place your target PDF(s) inside the `pdf_trimmer/input/` folder.
+2. Run the script from the project root directory (`python-utility-belt`):
 
 ```bash
-python pdf-trimmer.py
+python run.py pdf
 ```
 
 3. Select your PDF (if multiple exist), enter your page selections, and enter the file name:
@@ -49,7 +40,7 @@ Enter the name of the file:
 > textbook_trimmed
 ```
 
-*(Note: If only one PDF is present in `input/`, it will automatically select it without prompting for a number).*
+*(Note: If only one PDF is present in `pdf_trimmer/input/`, it will automatically select it without prompting for a number).*
 
 4. A native File Explorer save window will open pre-focused on the root directory with `textbook_trimmed.pdf` pre-filled. Confirm or adjust the destination and click **Save**.
 
