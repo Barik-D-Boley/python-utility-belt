@@ -1,0 +1,42 @@
+# ==========================================
+# 1. TOOL INPUTS & OUTPUTS (ALL PROJECTS)
+# ==========================================
+# Ignore all processed/input files in any subfolder
+**/input/*
+**/output/*
+
+# Preserve directory structures in Git
+!**/input/.gitkeep
+!**/output/.gitkeep
+
+# ==========================================
+# 2. PYTHON RUNTIME & DEPENDENCIES
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variable keys
+.env
+
+# ==========================================
+# 3. OS & SYSTEM JUNK
+# ==========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ==========================================
+# 4. IDE & EDITOR FILES
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
