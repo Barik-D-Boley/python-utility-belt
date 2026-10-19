@@ -27,16 +27,16 @@ If you prefer to pre-install dependencies without using `run.py` auto-installati
 
 | Shortcut | Tool Name | Description | Size / Footprint | Primary Dependencies | Subdirectory |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `pdf` | **PDF Trimmer** | Crop, slice, or extract specific page ranges from PDF files. | Lightweight (~1 MB) | `pypdf` | [`pdf_trimmer/`](./pdf_trimmer) |
+| `pdf` | **PDF Trimmer** | Extract page ranges natively without file bloat or re-encoding. | Lightweight (~1 MB) | `pypdf` | [`pdf_trimmer/`](./pdf_trimmer) |
 | `bg` | **Image BG Remover** | Remove image backgrounds locally without sending data to external APIs. | Heavy (~500 MB+) | `rembg`, `onnxruntime-directml`, `Pillow`, `numpy` | [`img_bg_remover/`](./img_bg_remover) |
 | `qr` | **QR Code Generator** | Generate custom, high-resolution QR codes from text or URLs. | Lightweight (~5 MB) | `qrcode`, `Pillow`, `numpy` | [`qr_code_generator/`](./qr_code_generator) |
 
 ## Detailed Tool Specifications
 
 ### 1. PDF Trimmer (`pdf`)
-* **Summary:** Quickly extracts target page ranges or crops large PDF documents locally without uploading sensitive files to online converter sites.
-* **Working Directory:** Files to be processed are placed in `pdf_trimmer/input/`, and generated output files export to `pdf_trimmer/output/`.
-* **Footprint:** Very fast, minimal RAM usage.
+- **Summary:** Natively extracts target page ranges without re-compressing pages or inflating file sizes (a common issue with "Print to PDF"), preserving original vector text, formatting, and document quality.
+- **Working Directory:** Files to be processed are placed in `pdf_trimmer/input/`, and generated output files export to `pdf_trimmer/output/`.
+- **Footprint:** Very fast, minimal RAM usage.
 
 ### 2. Image Background Remover (`bg`)
 * **Summary:** Uses local ML models to isolate subjects and strip backgrounds from image files. Uses DirectML GPU acceleration where available.
