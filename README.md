@@ -18,6 +18,11 @@ A collection of local, standalone Python productivity scripts managed by a centr
 
 `run.py` automatically checks whether all required Python packages are installed for that tool. If any are missing, it will prompt you to automatically install them before running.
 
+### Manual Package Installation (Optional)
+If you prefer to pre-install dependencies without using `run.py` auto-installation:
+- Install a single tool's dependencies: `pip install .[pdf]`
+- Install all tools' dependencies at once: `pip install .[all]`
+
 ## Available Tools
 
 | Shortcut | Tool Name | Description | Size / Footprint | Primary Dependencies | Subdirectory |
@@ -48,7 +53,7 @@ A collection of local, standalone Python productivity scripts managed by a centr
 Follow these steps to expand the repository with a new utility:
 
 ### 1. Folder Setup
-Create a new directory containing your script, individual `requirements.txt`, and input/output folders with `.gitkeep` files:
+Create a new directory containing your script and input/output folders with `.gitkeep` files:
 
 ```text
 my_new_tool/
@@ -56,24 +61,32 @@ my_new_tool/
 │   └── .gitkeep
 ├── output/
 │   └── .gitkeep
-├── my_tool.py
-├── requirements.txt
+├── main.py
 └── README.md
 ```
 
-### 2. Update `TOOLS` in `run.py`
-Open `run.py` and register your new script in the `TOOLS` registry dictionary using 2-space indentation:
+### 2. Add Dependencies to `pyproject.toml`
+Open `pyproject.toml` and add your package dependencies under `[project.optional-dependencies]`:
+
+```toml
+[project.optional-dependencies]
+...
+mytool = ["some-package>=1.0.0"]
+```
+
+### 3. Update `TOOLS` in `run.py`
+Register the new script shortcut in `run.py`:
 
 ```python
 TOOLS = {
   ...
   "mytool": {
     "script": Path("my_new_tool/main.py"),
-    "reqs": Path("my_new_tool/requirements.txt"),
-    "modules": ["required_module_name"],
+    "extra": "mytool",
+    "modules": ["some_package"],
   },
 }
 ```
 
-### 3. Test Execution
-Run `python run.py mytool` from the project root. `run.py` will verify directory paths, check dependencies, prompt for installation if necessary, and execute the script inside `my-new-tool/`.
+### 4. Test Execution
+Run `python run.py mytool` from the project root. `run.py` will verify directory paths, check dependencies, prompt for installation if necessary, and execute the script inside `my_new_tool/`.

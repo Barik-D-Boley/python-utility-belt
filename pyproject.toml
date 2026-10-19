@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-utility-belt"
+version = "0.1.0"
+description = "Developer utility toolkit"
+readme = "README.md"
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+pdf = [
+  "pypdf>=3.0.0"
+]
+bg = [
+  "rembg[gpu]",
+  "onnxruntime-directml",
+  "Pillow>=10.0.0",
+  "numpy>=1.24.0"
+]
+qr = [
+  "qrcode>=7.4.2",
+  "Pillow>=10.0.0",
+  "numpy>=1.24.0"
+]
+all = [
+  "python-utility-belt[pdf,bg,qr]"
+]
+
+# Configures setuptools to ignore virtual environments and test directories
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["test_env*", "venv*", ".venv*"]

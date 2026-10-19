@@ -1,4 +1,0 @@
-rembg[gpu]
-onnxruntime-directml
-Pillow
-numpy
