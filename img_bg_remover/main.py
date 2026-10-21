@@ -105,8 +105,8 @@ def process_selected_image(root, images, mode, config):
   else:
     print("Save cancelled.")
 
+# Checks if an NVIDIA GPU driver exists on Windows.
 def has_nvidia_gpu():
-  """Checks if an NVIDIA GPU driver exists on Windows."""
   if sys.platform == "win32":
     system_root = os.environ.get("SystemRoot", r"C:\Windows")
     return os.path.exists(os.path.join(system_root, "System32", "nvcuda.dll"))

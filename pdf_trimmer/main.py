@@ -3,8 +3,8 @@ import tkinter as tk
 from tkinter import filedialog
 from pypdf import PdfReader, PdfWriter
 
+# Parses a string like '13, 17-19, 21' into a sorted list of 0-based page indices.
 def parse_page_selection(selection_str, total_pages):
-  """Parses a string like '13, 17-19, 21' into a sorted list of 0-based page indices."""
   pages_to_keep = set()
   
   # Split the input string by commas
