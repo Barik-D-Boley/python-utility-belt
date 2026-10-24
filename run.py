@@ -21,6 +21,11 @@ TOOLS = {
     "extra": "qr",
     "modules": ["qrcode", "PIL", "numpy"],
   },
+  "cite": {
+    "script": Path("gemini_citation_remover/main.py"),
+    "extra": "cite",
+    "modules": ["docx"],
+  },
 }
 
 # Returns a list of modules from module_list that are not installed.

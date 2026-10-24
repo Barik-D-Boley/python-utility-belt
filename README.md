@@ -30,6 +30,7 @@ If you prefer to pre-install dependencies without using `run.py` auto-installati
 | `pdf` | **PDF Trimmer** | Extract page ranges natively without file bloat or re-encoding. | Lightweight (~1 MB) | `pypdf` | [`pdf_trimmer/`](./pdf_trimmer) |
 | `bg` | **Image BG Remover** | Remove image backgrounds locally without sending data to external APIs. | Heavy (~500 MB+) | `rembg`, `onnxruntime-directml`, `Pillow`, `numpy` | [`img_bg_remover/`](./img_bg_remover) |
 | `qr` | **QR Code Generator** | Generate custom, high-resolution QR codes from text or URLs. | Lightweight (~5 MB) | `qrcode`, `Pillow`, `numpy` | [`qr_code_generator/`](./qr_code_generator) |
+| `cite` | **Citation Cleaner** | Strip bracketed citations `[1]` from `.txt` and `.docx` files. | Lightweight (~2 MB) | `python-docx` | [`citation_cleaner/`](./citation_cleaner) |
 
 ## Detailed Tool Specifications
 
@@ -47,6 +48,11 @@ If you prefer to pre-install dependencies without using `run.py` auto-installati
 * **Summary:** Generates clean, scannable QR code PNG images for URLs, Wi-Fi details, or plain text.
 * **Working Directory:** Output QR code files are exported to `qr_code_generator/output/`.
 * **Footprint:** Instant execution, lightweight footprint.
+
+### 4. Citation Cleaner (`cite`)
+- **Summary:** Automatically strips bracketed citations (e.g., `[1]`, `[note]`) from `.txt` files and Word documents (`.docx`), including text inside tables, while preserving normal parenthetical citations and standard text.
+- **Working Directory:** Source files are placed in `citation_cleaner/input/`, and cleaned files export to `citation_cleaner/output/`.
+- **Footprint:** Instant execution, lightweight footprint.
 
 ## Developer Guide: Adding a New Tool
 
