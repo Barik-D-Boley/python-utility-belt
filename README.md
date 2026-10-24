@@ -65,6 +65,12 @@ my_new_tool/
 └── README.md
 ```
 
+> **Importing Existing Repositories:** If you clone or copy an existing GitHub repository into this project as a tool, delete its hidden `.git` folder so Git and GitHub Desktop track it as a standard directory rather than an isolated submodule:
+>
+> ```powershell
+> Remove-Item -Recurse -Force .\<folder_name>\.git
+> ```
+
 ### 2. Add Dependencies to `pyproject.toml`
 Open `pyproject.toml` and add your package dependencies under `[project.optional-dependencies]`:
 
@@ -88,5 +94,10 @@ TOOLS = {
 }
 ```
 
-### 4. Test Execution
+### 4. Update Root Documentation
+Document the new tool in the root `README.md` so users can discover it:
+- Add a new row to the **Available Tools** table with its shortcut, name, description, size footprint, primary dependencies, and subdirectory link.
+- Add a numbered entry under **Detailed Tool Specifications** detailing its purpose, input/output paths, and performance characteristics.
+
+### 5. Test Execution
 Run `python run.py mytool` from the project root. `run.py` will verify directory paths, check dependencies, prompt for installation if necessary, and execute the script inside `my_new_tool/`.
