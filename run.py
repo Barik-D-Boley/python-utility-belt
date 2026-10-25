@@ -6,25 +6,30 @@ from pathlib import Path
 
 # Tool metadata: script path, subfolder requirements file, and modules to check
 TOOLS = {
-  "pdf": {
-    "script": Path("pdf_trimmer/main.py"),
-    "extra": "pdf",
-    "modules": ["pypdf"],
-  },
   "bg": {
     "script": Path("img_bg_remover/main.py"),
     "extra": "bg",
     "modules": ["rembg", "onnxruntime", "PIL", "numpy"],
   },
-  "qr": {
-    "script": Path("qr_code_generator/main.py"),
-    "extra": "qr",
-    "modules": ["qrcode", "PIL", "numpy"],
-  },
   "cite": {
     "script": Path("gemini_citation_remover/main.py"),
     "extra": "cite",
     "modules": ["docx"],
+  },
+  "pdf": {
+    "script": Path("pdf_trimmer/main.py"),
+    "extra": "pdf",
+    "modules": ["pypdf"],
+  },
+  "ppm": {
+    "script": Path("powerpoint_merger/main.py"),
+    "extra": "ppm",
+    "modules": ["win32com"],
+  },
+  "qr": {
+    "script": Path("qr_code_generator/main.py"),
+    "extra": "qr",
+    "modules": ["qrcode", "PIL", "numpy"],
   },
 }
 
