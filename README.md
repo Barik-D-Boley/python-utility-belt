@@ -27,32 +27,12 @@ If you prefer to pre-install dependencies without using `run.py` auto-installati
 
 | Shortcut | Tool Name | Description | Size / Footprint | Primary Dependencies | Subdirectory |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `pdf` | **PDF Trimmer** | Extract page ranges natively without file bloat or re-encoding. | Lightweight (~1 MB) | `pypdf` | [`pdf_trimmer/`](./pdf_trimmer) |
 | `bg` | **Image BG Remover** | Remove image backgrounds locally without sending data to external APIs. | Heavy (~500 MB+) | `rembg`, `onnxruntime-directml`, `Pillow`, `numpy` | [`img_bg_remover/`](./img_bg_remover) |
-| `qr` | **QR Code Generator** | Generate custom, high-resolution QR codes from text or URLs. | Lightweight (~5 MB) | `qrcode`, `Pillow`, `numpy` | [`qr_code_generator/`](./qr_code_generator) |
 | `cite` | **Citation Cleaner** | Strip bracketed citations `[1]` from `.txt` and `.docx` files. | Lightweight (~2 MB) | `python-docx` | [`citation_cleaner/`](./citation_cleaner) |
+| `pdf` | **PDF Trimmer** | Extract page ranges natively without file bloat or re-encoding. | Lightweight (~1 MB) | `pypdf` | [`pdf_trimmer/`](./pdf_trimmer) |
+| `ppm` | **PowerPoint Merger** | Cleanly merge multiple PowerPoint (`.pptx`) presentations into a single file. | Lightweight (~1 MB) | `pywin32` | [`powerpoint_merger/`](./powerpoint_merger) |
+| `qr` | **QR Code Generator** | Generate custom, high-resolution QR codes from text or URLs. | Lightweight (~5 MB) | `qrcode`, `Pillow`, `numpy` | [`qr_code_generator/`](./qr_code_generator) |
 
-## Detailed Tool Specifications
-
-### 1. PDF Trimmer (`pdf`)
-- **Summary:** Natively extracts target page ranges without re-compressing pages or inflating file sizes (a common issue with "Print to PDF"), preserving original vector text, formatting, and document quality.
-- **Working Directory:** Files to be processed are placed in `pdf_trimmer/input/`, and generated output files export to `pdf_trimmer/output/`.
-- **Footprint:** Very fast, minimal RAM usage.
-
-### 2. Image Background Remover (`bg`)
-* **Summary:** Uses local ML models to isolate subjects and strip backgrounds from image files. Uses DirectML GPU acceleration where available.
-* **Working Directory:** Source images go into `img_bg_remover/input/`, and processed transparent PNGs land in `img_bg_remover/output/`.
-* **Footprint:** Requires an initial model download (~170 MB) on first launch and larger execution memory.
-
-### 3. QR Code Generator (`qr`)
-* **Summary:** Generates clean, scannable QR code PNG images for URLs, Wi-Fi details, or plain text.
-* **Working Directory:** Output QR code files are exported to `qr_code_generator/output/`.
-* **Footprint:** Instant execution, lightweight footprint.
-
-### 4. Citation Cleaner (`cite`)
-- **Summary:** Automatically strips bracketed citations (e.g., `[1]`, `[note]`) from `.txt` files and Word documents (`.docx`), including text inside tables, while preserving normal parenthetical citations and standard text.
-- **Working Directory:** Source files are placed in `citation_cleaner/input/`, and cleaned files export to `citation_cleaner/output/`.
-- **Footprint:** Instant execution, lightweight footprint.
 
 ## Developer Guide: Adding a New Tool
 
