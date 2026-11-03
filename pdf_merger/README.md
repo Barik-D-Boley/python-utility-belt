@@ -1,35 +1,40 @@
-# PDF Merger Utility
+# PDF Merger
 
-A lightweight Python command-line utility to merge multiple PDF files—including AES-encrypted documents like CAD certificates—from a designated inputs folder into a single output document.
+A lightweight Python command-line utility to merge multiple PDF files and images into a single document natively while automatically resizing images to match PDF page dimensions.
 
 ## Prerequisites
 
-* Python 3.8 or higher
-* `pip` package manager
-
-## Installation
-
-1. Clone or download this repository.
-2. Ensure you have an `inputs` folder in the root directory. Place the PDF files you want to merge inside this folder (files will be merged in alphabetical/numerical order, e.g., `01_cswa_certificate.pdf`, `02_autodesk_certificate.pdf`).
-3. Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
+- Python 3.8 or higher
+- `pip` package manager
 
 ## Usage
 
-1. Run the script from your terminal:
+1. Place your target PDF(s) and image(s) inside the `pdf_merger/input/` folder.
+2. Run the script from the project root directory (`python-utility-belt`):
 
 ```bash
-python merge_pdfs.py
+python run.py pdfm
 ```
 
-*(Note: On some Windows setups, you may need to use `py merge_pdfs.py`)*
+3. Enter the output filename when prompted (or press **Enter** to use the default `merged_output.pdf`):
 
-2. Check the console output:
+```text
+Enter output filename (default: merged_output.pdf):
+> 
 
-* **Success**: `Success! Merged file saved to: merged_output.pdf`
-* **Error**: `Error: 'inputs' folder not found at ...` or `No PDF files found in 'inputs/'.`
+Merging files:
+  - Adding PDF: Signed_E611_Form.pdf
+  - Resizing & Adding Image: IDA_Rexburg.PNG
+  - Resizing & Adding Image: Parking_Receipt.jpg
+  - Resizing & Adding Image: Rexburg_IDA.PNG
+```
 
-The final merged file `merged_output.pdf` will appear in your project root folder.
+*(Note: PDFs will automatically be placed first in alphabetical order, followed by images in alphabetical order).*
+
+4. A native File Explorer save window will open pre-focused on the project directory with your chosen filename pre-filled. Confirm or adjust the destination and click **Save**.
+
+5. Check the console output:
+
+- **Success**: `Success! Merged file saved to: '/path/to/output/merged_output.pdf'`
+- **Cancelled**: `Save operation cancelled.`
+- **Error**: `Error: 'input' folder not found at ...` (or specific error message)

@@ -30,7 +30,7 @@ output_path = output_dir / filename
 
 ppt_app = win32com.client.Dispatch("PowerPoint.Application")
 
-print(f"Merging {len(files)} presentation(s)...")
+print(f"Merging {len(files)} presentations...")
 
 try:
   # Open the first file as the base presentation

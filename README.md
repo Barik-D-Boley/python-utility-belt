@@ -29,7 +29,8 @@ If you prefer to pre-install dependencies without using `run.py` auto-installati
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `bg` | **Image BG Remover** | Remove image backgrounds locally without sending data to external APIs. | Heavy (~500 MB+) | `rembg`, `onnxruntime-directml`, `Pillow`, `numpy` | [`img_bg_remover/`](./img_bg_remover) |
 | `cite` | **Citation Cleaner** | Strip bracketed citations `[1]` from `.txt` and `.docx` files. | Lightweight (~2 MB) | `python-docx` | [`citation_cleaner/`](./citation_cleaner) |
-| `pdf` | **PDF Trimmer** | Extract page ranges natively without file bloat or re-encoding. | Lightweight (~1 MB) | `pypdf` | [`pdf_trimmer/`](./pdf_trimmer) |
+| `pdfm` | **PDF Merger** | Merge PDFs and images natively, dynamically scaling images to fit page dimensions. | Lightweight (~5 MB) | `pypdf`, `Pillow`, `cryptography` | [`pdf_merger/`](./pdf_merger) |
+| `pdft` | **PDF Trimmer** | Extract page ranges natively without file bloat or re-encoding. | Lightweight (~1 MB) | `pypdf`, `cryptography` | [`pdf_trimmer/`](./pdf_trimmer) |
 | `ppm` | **PowerPoint Merger** | Cleanly merge multiple PowerPoint (`.pptx`) presentations into a single file. | Lightweight (~1 MB) | `pywin32` | [`powerpoint_merger/`](./powerpoint_merger) |
 | `qr` | **QR Code Generator** | Generate custom, high-resolution QR codes from text or URLs. | Lightweight (~5 MB) | `qrcode`, `Pillow`, `numpy` | [`qr_code_generator/`](./qr_code_generator) |
 

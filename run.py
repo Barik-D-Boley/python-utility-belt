@@ -16,9 +16,14 @@ TOOLS = {
     "extra": "cite",
     "modules": ["docx"],
   },
-  "pdf": {
+  "pdfm": {
+    "script": Path("pdf_merger/main.py"),
+    "extra": "pdf-merge",
+    "modules": ["pypdf", "PIL"],
+  },
+  "pdft": {
     "script": Path("pdf_trimmer/main.py"),
-    "extra": "pdf",
+    "extra": "pdf-trim",
     "modules": ["pypdf"],
   },
   "ppm": {

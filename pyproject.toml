@@ -19,8 +19,14 @@ bg = [
 cite = [
   "python-docx>=1.0.0"
 ]
-pdf = [
-  "pypdf>=3.0.0"
+pdf-merge = [
+  "pypdf>=3.0.0",
+  "Pillow>=10.0.0",
+  "cryptography>=41.0.0"
+]
+pdf-trim = [
+  "pypdf>=3.0.0",
+  "cryptography>=41.0.0"
 ]
 ppm = [
   "pywin32>=306"
@@ -33,6 +39,11 @@ qr = [
 all = [
   "python-utility-belt[bg,cite,pdf,ppm,qr]"
 ]
+
+# Command-line executable names
+[project.scripts]
+pdf-trim = "python_utility_belt.pdf.trim:main"
+pdf-merge = "python_utility_belt.pdf.merge:main"
 
 # Configures setuptools to ignore virtual environments and test directories
 [tool.setuptools.packages.find]
