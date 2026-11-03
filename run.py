@@ -4,6 +4,8 @@ import importlib.util
 import shutil
 from pathlib import Path
 
+sys.dont_write_bytecode = True
+
 # Tool metadata: script path, subfolder requirements file, and modules to check
 TOOLS = {
   "bg": {
@@ -50,7 +52,7 @@ def check_missing_modules(module_list):
 def cleanup_build_artifacts():
   # Explicit build directories to remove
   build_folders = [Path("build"), Path("dist"), Path(".eggs")]
-  
+
   # Include any .egg-info directories found in root
   build_folders.extend(Path(".").glob("*.egg-info"))
 
@@ -58,14 +60,15 @@ def cleanup_build_artifacts():
     if folder.exists() and folder.is_dir():
       shutil.rmtree(folder, ignore_errors=True)
 
-# Prompts the user to install missing dependencies from a requirements.txt file.
+
+# Prompts the user to install missing dependencies from pyproject.toml extras.
 def prompt_and_install(extra):
   print(f"\n[!] Missing required packages for this tool.")
   choice = input("Would you like to install them now? (y/n): ").strip().lower()
 
   if choice in ["y", "yes"]:
     print("\nInstalling dependencies...")
-    result = subprocess.run([sys.executable, "-m", "pip", "install", f".[ {extra} ]"])
+    result = subprocess.run([sys.executable, "-m", "pip", "install", f".[{extra}]"])
     cleanup_build_artifacts()
 
     if result.returncode == 0:
@@ -78,17 +81,27 @@ def prompt_and_install(extra):
     print("Cannot run tool without required dependencies.")
     return False
 
+
 def main():
-  # Checks that the command has a valid shortcut; returns list of shortcuts if not a valid input
-  if len(sys.argv) < 2 or sys.argv[1] not in TOOLS:
+  # Display help menu if no argument provided or if argument isn't recognized
+  if len(sys.argv) < 2 or (sys.argv[1].lower() not in TOOLS and sys.argv[1].lower() != "new"):
     print("\nAvailable tools:")
-    for key in TOOLS:
-      print(f"  - {key}: {TOOLS[key]['script'].parent.name}")
-    print("\nUsage: python run.py <tool_shortcut>  (e.g., python run.py pdf)\n")
+    for key in sorted(TOOLS):
+      print(f"  - {key:<6}: {TOOLS[key]['script'].parent.name}")
+    print("  - new   : Create a new tool scaffold")
+    print("\nUsage: python run.py <tool_shortcut>  (e.g., python run.py pdft)\n")
+    return
+
+  shortcut = sys.argv[1].lower()
+
+  # Launch the scaffold generator if 'new' is passed
+  if shortcut == "new":
+    from scaffold import create_new_tool
+    create_new_tool(TOOLS)
     return
 
   # Extracts tool metadata for the selected shortcut
-  tool_info = TOOLS[sys.argv[1]]
+  tool_info = TOOLS[shortcut]
   script_path = tool_info["script"]
   extra_name = tool_info["extra"]
   required_modules = tool_info["modules"]
@@ -110,6 +123,7 @@ def main():
     return
 
   subprocess.run([sys.executable, script_file], cwd=str(tool_dir))
+
 
 if __name__ == "__main__":
   main()
